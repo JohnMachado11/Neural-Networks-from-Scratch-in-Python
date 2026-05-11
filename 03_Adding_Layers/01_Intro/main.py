@@ -3,13 +3,13 @@ import numpy as np
 """
 Input Layer   ---   Hidden Layer 1   ---   Hidden Layer 2
 
- 4 Neurons    ->     3 Neurons        ->     3 Neurons
+ 4 Inputs     ->     3 Neurons        ->     3 Neurons
 """
 
-# 4 Neurons
-inputs = [[1.0, 2.0, 3.0, 2.5], # Neuron 1 in Hidden Layer 1 will be receiving input data from 4 neurons
-          [2.0, 5.0, -1.0, 2.0], # Neuron 2 in Hidden Layer 1 will be receiving input data from 4 neurons
-          [-1.5, 2.7, 3.3, -0.8]] # Neuron 3 in Hidden Layer 1 will be receiving input data from 4 neurons
+# Batch of 3 samples, each with 4 input features
+inputs = [[1.0, 2.0, 3.0, 2.5], # Sample 1: 4 features fed to all 3 neurons in Hidden Layer 1
+          [2.0, 5.0, -1.0, 2.0], # Sample 2: 4 features fed to all 3 neurons in Hidden Layer 1
+          [-1.5, 2.7, 3.3, -0.8]] # Sample 3: 4 features fed to all 3 neurons in Hidden Layer 1
 
 weights = [[0.2, 0.8, -0.5, 1.0], # Neuron 1 in Hidden Layer 1 weights 
            [0.5, -0.91, 0.26, -0.5], # Neuron 2 in Hidden Layer 1 weights
@@ -20,12 +20,12 @@ biases = [2, 3, 0.5] # Neurons 1 -> 3 in Hidden Layer 1 biases
 layer1_outputs = np.dot(inputs, np.array(weights).T) + biases
 print(layer1_outputs) 
 
-""" 
-Hidden Layer 1 Outputs:
+"""
+Hidden Layer 1 Outputs (one row per sample, one column per neuron):
 
-[[ 4.8    1.21   2.385] # Neuron 1 in Hidden Layer 2 will be receiving output data from 3 neurons in Hidden Layer 1
-[ 8.9   -1.81   0.2  ] # Neuron 2 in Hidden Layer 2 will be receiving output data from 3 neurons in Hidden Layer 1
-[ 1.41   1.051  0.026]] # Neuron 3 in Hidden Layer 2 will be receiving output data from 3 neurons in Hidden Layer 1
+[[ 4.8    1.21   2.385] # Sample 1: data coming from the 3 neurons in Hidden Layer 1, fed to each of the 3 neurons in Hidden Layer 2
+[ 8.9   -1.81   0.2  ] # Sample 2: data coming from the 3 neurons in Hidden Layer 1, fed to each of the 3 neurons in Hidden Layer 2
+[ 1.41   1.051  0.026]] # Sample 3: data coming from the 3 neurons in Hidden Layer 1, fed to each of the 3 neurons in Hidden Layer 2
 """
 
 weights2 = [[0.1, -0.14, 0.5], # Neuron 1 in Hidden Layer 2 weights 
